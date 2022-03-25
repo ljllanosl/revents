@@ -1,5 +1,5 @@
-import React from "react";
-import { Segment, Button, Placeholder } from "semantic-ui-react";
+import React from 'react';
+import { Segment, Button, Placeholder } from 'semantic-ui-react';
 export default function EventListItemPlaceholder() {
   return (
     <Placeholder fluid>
@@ -23,7 +23,7 @@ export default function EventListItemPlaceholder() {
         </Segment>
         <Segment secondary style={{ minHeight: 70 }} />
         <Segment clearing>
-          <Button disabled color="blue" floated="right" content="View" />
+          <Button disabled color='blue' floated='right' content='View' />
         </Segment>
       </Segment.Group>
     </Placeholder>

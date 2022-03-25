@@ -1,6 +1,6 @@
-import { useField } from "formik";
-import React from "react";
-import { FormField, Label } from "semantic-ui-react";
+import { useField } from 'formik';
+import React from 'react';
+import { FormField, Label } from 'semantic-ui-react';
 
 export default function MyTextArea({ label, ...props }) {
   const [field, meta] = useField(props);
@@ -9,7 +9,7 @@ export default function MyTextArea({ label, ...props }) {
       <label>{label}</label>
       <textarea {...field} {...props} />
       {meta.touched && meta.error ? (
-        <Label basic color="red">
+        <Label basic color='red'>
           {meta.error}
         </Label>
       ) : null}

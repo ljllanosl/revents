@@ -3,7 +3,7 @@ import {
   DELETE_EVENT,
   FETCH_EVENTS,
   UPDATE_EVENT,
-} from "./eventConstants";
+} from './eventConstants';
 
 const initialState = {
   events: [],
@@ -32,7 +32,7 @@ export default function eventReducer(state = initialState, { type, payload }) {
     case FETCH_EVENTS:
       return {
         ...state,
-        events: payload
+        events: payload,
       };
     default:
       return state;

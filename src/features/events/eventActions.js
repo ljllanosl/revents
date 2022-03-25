@@ -1,15 +1,15 @@
-import { fetchSampleData } from "../../app/api/mockApi";
+import { fetchSampleData } from '../../app/api/mockApi';
 import {
   asyncActionError,
   asyncActionFinish,
   asyncActionStart,
-} from "../../app/async/asyncReducer";
+} from '../../app/async/asyncReducer';
 import {
   CREATE_EVENT,
   DELETE_EVENT,
   FETCH_EVENTS,
   UPDATE_EVENT,
-} from "./eventConstants";
+} from './eventConstants';
 
 export function loadEvents() {
   return async function (dispatch) {
@@ -23,6 +23,14 @@ export function loadEvents() {
     }
   };
 }
+
+export function listenToEvents(events) {
+  return {
+    type: FETCH_EVENTS,
+    payload: events,
+  };
+}
+
 export function createEvent(event) {
   return {
     type: CREATE_EVENT,

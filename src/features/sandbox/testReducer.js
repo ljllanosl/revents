@@ -3,11 +3,11 @@ import {
   asyncActionError,
   asyncActionFinish,
   asyncActionStart,
-} from "../../app/async/asyncReducer";
-import { delay } from "../../app/common/util/util";
+} from '../../app/async/asyncReducer';
+import { delay } from '../../app/common/util/util';
 
-export const INCREMENT_COUNTER = "INCREMENT_COUNTER";
-export const DECREMENT_COUNTER = "DECREMENT_COUNTER";
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
 export function increment(amount) {
   return async function (dispatch) {
