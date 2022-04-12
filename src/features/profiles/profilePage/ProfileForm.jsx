@@ -1,5 +1,5 @@
-import { Form, Formik } from 'formik';
 import React from 'react';
+import { Formik, Form } from 'formik';
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyTextArea from '../../../app/common/form/MyTextArea';
 import { Button } from 'semantic-ui-react';
@@ -29,7 +29,7 @@ export default function ProfileForm({ profile }) {
     >
       {({ isSubmitting, isValid, dirty }) => (
         <Form className='ui form'>
-          <MyTextInput name='displayName' placeholder='DisplayName' />
+          <MyTextInput name='displayName' placeholder='Display Name' />
           <MyTextArea name='description' placeholder='Description' />
           <Button
             loading={isSubmitting}
