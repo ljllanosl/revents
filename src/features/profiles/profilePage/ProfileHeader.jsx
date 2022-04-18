@@ -37,7 +37,7 @@ export default function ProfileHeader({ profile, isCurrentUser }) {
             <Statistic label='Followers' value={10} />
             <Statistic label='Following' value={5} />
           </Statistic.Group>
-          {isCurrentUser && (
+          {!isCurrentUser && (
             <>
               <Divider />
               <Reveal animated='move'>
