@@ -1,18 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import {
-  asyncActionStart,
-  asyncActionError,
-  asyncActionFinish,
-} from '../async/asyncReducer';
+import { asyncActionStart, asyncActionError, asyncActionFinish } from '../async/asyncReducer';
 import { dataFromSnapshot } from '../firestore/firestoreService';
 
-export default function useFirestoreDoc({
-  query,
-  data,
-  deps,
-  shouldExecute = true,
-}) {
+export default function useFirestoreDoc({ query, data, deps, shouldExecute = true }) {
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -5,11 +5,7 @@ import { addEventChatComment } from '../../../app/firestore/firebaseService';
 import { Loader } from 'semantic-ui-react';
 import * as Yup from 'yup';
 
-export default function EventDetailedChatForm({
-  eventId,
-  parentId,
-  closeForm,
-}) {
+export default function EventDetailedChatForm({ eventId, parentId, closeForm }) {
   return (
     <Formik
       initialValues={{ comment: '' }}

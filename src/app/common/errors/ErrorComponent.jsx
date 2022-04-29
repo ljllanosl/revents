@@ -8,10 +8,7 @@ export default function ErrorComponent() {
 
   return (
     <Segment placeholder>
-      <Header
-        textAlign='center'
-        content={error?.message || 'we have an error'}
-      />
+      <Header textAlign='center' content={error?.message || 'we have an error'} />
       <Button
         as={Link}
         to='/events'

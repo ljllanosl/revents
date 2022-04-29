@@ -20,8 +20,7 @@ export default function PhotoUploadWidget({ setEditMode }) {
     uploadTask.on(
       'state_changed',
       (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
       },
       (error) => {
@@ -59,10 +58,7 @@ export default function PhotoUploadWidget({ setEditMode }) {
       <Grid.Column width={4}>
         <Header color='teal' sub content='Step 2 - Resize' />
         {files.length > 0 && (
-          <PhotoWidgetCropper
-            setImage={setImage}
-            imagePreview={files[0].preview}
-          />
+          <PhotoWidgetCropper setImage={setImage} imagePreview={files[0].preview} />
         )}
       </Grid.Column>
       <Grid.Column width={1} />

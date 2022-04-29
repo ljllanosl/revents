@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Segment, Comment, Header } from 'semantic-ui-react';
-import {
-  firebaseObjectToArray,
-  getEventChatRef,
-} from '../../../app/firestore/firebaseService';
+import { firebaseObjectToArray, getEventChatRef } from '../../../app/firestore/firebaseService';
 import { listenToEventChat } from '../eventActions';
 import EventDetailedChatForm from './EventDetailedChatForm';
 import { formatDistance } from 'date-fns';
@@ -30,9 +27,7 @@ export default function EventDetailedChat({ eventId }) {
   useEffect(() => {
     getEventChatRef(eventId).on('value', (snapshot) => {
       if (!snapshot.exists()) return;
-      dispatch(
-        listenToEventChat(firebaseObjectToArray(snapshot.val()).reverse())
-      );
+      dispatch(listenToEventChat(firebaseObjectToArray(snapshot.val()).reverse()));
     });
     return () => {
       dispatch({ type: CLEAR_COMMENTS });
@@ -42,22 +37,12 @@ export default function EventDetailedChat({ eventId }) {
 
   return (
     <>
-      <Segment
-        textAlign='center'
-        attached='top'
-        inverted
-        color='teal'
-        style={{ border: 'none' }}
-      >
+      <Segment textAlign='center' attached='top' inverted color='teal' style={{ border: 'none' }}>
         <Header>Chat about this event</Header>
       </Segment>
 
       <Segment attached>
-        <EventDetailedChatForm
-          eventId={eventId}
-          parentId={0}
-          closeForm={setShowReplyForm}
-        />
+        <EventDetailedChatForm eventId={eventId} parentId={0} closeForm={setShowReplyForm} />
         <Comment.Group>
           {createDataTree(comments).map((comment) => (
             <Comment key={comment.id}>
@@ -79,29 +64,24 @@ export default function EventDetailedChat({ eventId }) {
                 </Comment.Text>
                 <Comment.Actions>
                   <Comment.Action
-                    onClick={() =>
-                      setShowReplyForm({ open: true, commentId: comment.id })
-                    }
+                    onClick={() => setShowReplyForm({ open: true, commentId: comment.id })}
                   >
                     Reply
                   </Comment.Action>
-                  {showReplyForm.open &&
-                    showReplyForm.commentId === comment.id && (
-                      <EventDetailedChatForm
-                        eventId={eventId}
-                        parentId={comment.id}
-                        closeForm={handleCloseReplyForm}
-                      />
-                    )}
+                  {showReplyForm.open && showReplyForm.commentId === comment.id && (
+                    <EventDetailedChatForm
+                      eventId={eventId}
+                      parentId={comment.id}
+                      closeForm={handleCloseReplyForm}
+                    />
+                  )}
                 </Comment.Actions>
               </Comment.Content>
               {comment.childNodes.length > 0 && (
                 <Comment.Group>
                   {comment.childNodes.reverse().map((child) => (
                     <Comment key={child.id}>
-                      <Comment.Avatar
-                        src={child.photoURL || '/assets/user.png'}
-                      />
+                      <Comment.Avatar src={child.photoURL || '/assets/user.png'} />
                       <Comment.Content>
                         <Comment.Author as={Link} to={`/profile/${child.uid}`}>
                           {child.displayName}
@@ -128,14 +108,13 @@ export default function EventDetailedChat({ eventId }) {
                           >
                             Reply
                           </Comment.Action>
-                          {showReplyForm.open &&
-                            showReplyForm.commentId === child.id && (
-                              <EventDetailedChatForm
-                                eventId={eventId}
-                                parentId={child.parentId}
-                                closeForm={handleCloseReplyForm}
-                              />
-                            )}
+                          {showReplyForm.open && showReplyForm.commentId === child.id && (
+                            <EventDetailedChatForm
+                              eventId={eventId}
+                              parentId={child.parentId}
+                              closeForm={handleCloseReplyForm}
+                            />
+                          )}
                         </Comment.Actions>
                       </Comment.Content>
                     </Comment>

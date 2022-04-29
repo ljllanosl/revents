@@ -37,23 +37,10 @@ export default function AccountPage() {
           >
             {({ errors, isSubmitting, isValid, dirty }) => (
               <Form className='ui form'>
-                <MyTextInput
-                  name='newPassword1'
-                  type='password'
-                  placeholder='New Password'
-                />
-                <MyTextInput
-                  name='newPassword2'
-                  type='password'
-                  placeholder='Confirm Password'
-                />
+                <MyTextInput name='newPassword1' type='password' placeholder='New Password' />
+                <MyTextInput name='newPassword2' type='password' placeholder='Confirm Password' />
                 {errors.auth && (
-                  <Label
-                    basic
-                    color='red'
-                    style={{ marginBottom: 10 }}
-                    content={errors.auth}
-                  />
+                  <Label basic color='red' style={{ marginBottom: 10 }} content={errors.auth} />
                 )}
                 <Button
                   style={{ display: 'block' }}

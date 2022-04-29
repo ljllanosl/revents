@@ -36,18 +36,9 @@ export default function RegisterForm() {
           <Form className='ui form'>
             <MyTextInput name='displayName' placeholder='Display Name' />
             <MyTextInput name='email' placeholder='email address' />
-            <MyTextInput
-              name='password'
-              placeholder='password'
-              type='password'
-            />
+            <MyTextInput name='password' placeholder='password' type='password' />
             {errors.auth && (
-              <Label
-                basic
-                color='red'
-                style={{ marginBottom: 10 }}
-                content={errors.auth}
-              />
+              <Label basic color='red' style={{ marginBottom: 10 }} content={errors.auth} />
             )}
             <Button
               loading={isSubmitting}

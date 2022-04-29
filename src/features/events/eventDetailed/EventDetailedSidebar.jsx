@@ -33,10 +33,7 @@ export default function EventDetailedSidebar({ attendees, hostUid }) {
                   content='Host'
                 />
               )}
-              <Item.Image
-                size='tiny'
-                src={attendee.photoURL || '/assets/user.png'}
-              />
+              <Item.Image size='tiny' src={attendee.photoURL || '/assets/user.png'} />
               <Item.Content verticalAlign='middle'>
                 <Item.Header as='h3'>
                   <span>{attendee.displayName}</span>

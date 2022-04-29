@@ -31,9 +31,7 @@ export default function PhotoWidgetDropzone({ setFiles }) {
   return (
     <div
       {...getRootProps()}
-      style={
-        isDragActive ? { ...dropzoneStyles, ...dropzoneActive } : dropzoneStyles
-      }
+      style={isDragActive ? { ...dropzoneStyles, ...dropzoneActive } : dropzoneStyles}
     >
       <input {...getInputProps()} />
       <Icon name='upload' size='huge' />

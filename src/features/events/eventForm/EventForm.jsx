@@ -93,11 +93,7 @@ export default function EventForm({ match, history }) {
           <Form className='ui form'>
             <Header sub color='teal' content='Event details' />
             <MyTextInput name='title' placeholder='Event title' />
-            <MySelectInput
-              name='category'
-              placeholder='Category'
-              options={categoryData}
-            />
+            <MySelectInput name='category' placeholder='Category' options={categoryData} />
             <MyTextArea name='description' placeholder='Description' rows={3} />
             <Header sub color='teal' content='Event location details ' />
             <MyTextInput name='city' placeholder='City' />
@@ -116,11 +112,7 @@ export default function EventForm({ match, history }) {
                 type='button'
                 floated='left'
                 color={selectedEvent.isCancelled ? 'green' : 'red'}
-                content={
-                  selectedEvent.isCancelled
-                    ? 'Reactivate event'
-                    : 'Cancel event'
-                }
+                content={selectedEvent.isCancelled ? 'Reactivate event' : 'Cancel event'}
                 onClick={() => setConfirmOpen(true)}
               />
             )}

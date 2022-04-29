@@ -14,9 +14,7 @@ import { Redirect } from 'react-router';
 export default function EventDetailedPage({ match }) {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
-  const event = useSelector((state) =>
-    state.event.events.find((e) => e.id === match.params.id)
-  );
+  const event = useSelector((state) => state.event.events.find((e) => e.id === match.params.id));
   const { loading, error } = useSelector((state) => state.async);
   const isHost = event?.hostUid === currentUser.uid;
   const isGoing = event?.attendees?.some((a) => a.id === currentUser.uid);
@@ -27,8 +25,7 @@ export default function EventDetailedPage({ match }) {
     deps: [match.params.id, dispatch],
   });
 
-  if (loading || (!event && !error))
-    return <LoadingComponent content='Loading event...' />;
+  if (loading || (!event && !error)) return <LoadingComponent content='Loading event...' />;
 
   if (error) return <Redirect to='/error' />;
 
@@ -40,10 +37,7 @@ export default function EventDetailedPage({ match }) {
         <EventDetailedChat eventId={event.id} />
       </Grid.Column>
       <Grid.Column width={6}>
-        <EventDetailedSidebar
-          attendees={event?.attendees}
-          hostUid={event.hostUid}
-        />
+        <EventDetailedSidebar attendees={event?.attendees} hostUid={event.hostUid} />
       </Grid.Column>
     </Grid>
   );

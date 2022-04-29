@@ -73,9 +73,7 @@ export default function PhotosTab({ profile, isCurrentUser }) {
                   <Button.Group fluid width={2}>
                     <Button
                       name={photo.id}
-                      loading={
-                        updating.isUpdating && updating.target === photo.id
-                      }
+                      loading={updating.isUpdating && updating.target === photo.id}
                       onClick={(e) => handleSetMainPhoto(photo, e.target.name)}
                       disabled={photo.url === profile.photoURL}
                       basic
@@ -85,9 +83,7 @@ export default function PhotosTab({ profile, isCurrentUser }) {
                     <Button
                       name={photo.id}
                       onClick={(e) => handleDeletePhoto(photo, e.target.name)}
-                      loading={
-                        deleting.isDeleting && deleting.target === photo.id
-                      }
+                      loading={deleting.isDeleting && deleting.target === photo.id}
                       disabled={photo.url === profile.photoURL}
                       basic
                       color='red'

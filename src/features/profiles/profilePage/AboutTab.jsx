@@ -9,11 +9,7 @@ export default function AboutTab({ profile, isCurrentUser }) {
     <Tab.Pane>
       <Grid>
         <Grid.Column width={16}>
-          <Header
-            floated='left'
-            icon='user'
-            content={`About ${profile.displayName}`}
-          />
+          <Header floated='left' icon='user' content={`About ${profile.displayName}`} />
           {isCurrentUser && (
             <Button
               onClick={() => setEditMode(!editMode)}
@@ -29,9 +25,7 @@ export default function AboutTab({ profile, isCurrentUser }) {
           ) : (
             <>
               <div style={{ marginBottom: 10 }}>
-                <strong>
-                  Member since: {format(profile.createdAt, 'dd MMM yyyy')}
-                </strong>
+                <strong>Member since: {format(profile.createdAt, 'dd MMM yyyy')}</strong>
                 <div>{profile.description || null}</div>
               </div>
             </>

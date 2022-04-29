@@ -15,8 +15,7 @@ export default function EventListItem({ event }) {
             <Item.Content>
               <Item.Header content={event.title} />
               <Item.Description>
-                Hosted by{' '}
-                <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>{' '}
+                Hosted by <Link to={`/profile/${event.hostUid}`}>{event.hostedBy}</Link>{' '}
               </Item.Description>
               {event.isCancelled && (
                 <Label
@@ -51,13 +50,7 @@ export default function EventListItem({ event }) {
           floated='right'
           content='Delete'
         />
-        <Button
-          as={Link}
-          to={`/events/${event.id}`}
-          color='teal'
-          floated='right'
-          content='View'
-        />
+        <Button as={Link} to={`/events/${event.id}`} color='teal' floated='right' content='View' />
       </Segment>
     </Segment.Group>
   );
