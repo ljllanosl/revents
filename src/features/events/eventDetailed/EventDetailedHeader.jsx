@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Header, Image, Item, Segment } from 'semantic-ui-react';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
-import { addUserAttendace, cancelUserAttendance } from '../../../app/firestore/firestoreService';
+import { addUserAttendance, cancelUserAttendance } from '../../../app/firestore/firestoreService';
 import { useSelector } from 'react-redux';
 import UnauthModal from '../../auth/UnauthModal';
 
@@ -28,7 +28,7 @@ export default function EventDetailedHeader({ event, isHost, isGoing }) {
   async function handleUserJoinEvent() {
     setLoading(true);
     try {
-      await addUserAttendace(event);
+      await addUserAttendance(event);
     } catch (error) {
       toast.error(error.message);
     } finally {

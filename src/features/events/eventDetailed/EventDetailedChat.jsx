@@ -1,46 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Segment, Comment, Header } from 'semantic-ui-react';
-import { firebaseObjectToArray, getEventChatRef } from '../../../app/firestore/firebaseService';
-import { listenToEventChat } from '../eventActions';
 import EventDetailedChatForm from './EventDetailedChatForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEventChatRef, firebaseObjectToArray } from '../../../app/firestore/firebaseService';
+import { listenToEventChat } from '../eventActions';
+import { Link } from 'react-router-dom';
 import { formatDistance } from 'date-fns';
 import { CLEAR_COMMENTS } from '../eventConstants';
+import { useState } from 'react';
 import { createDataTree } from '../../../app/common/util/util';
+import { onValue, off } from '@firebase/database';
 
 export default function EventDetailedChat({ eventId }) {
   const dispatch = useDispatch();
   const { comments } = useSelector((state) => state.event);
-  const { authenticated } = useSelector((state) => state.event);
+  const { authenticated } = useSelector((state) => state.auth);
   const [showReplyForm, setShowReplyForm] = useState({
     open: false,
     commentId: null,
   });
 
   function handleCloseReplyForm() {
-    setShowReplyForm({
-      open: false,
-      commentId: null,
-    });
+    setShowReplyForm({ open: false, commentId: null });
   }
 
   useEffect(() => {
-    getEventChatRef(eventId).on('value', (snapshot) => {
+    onValue(getEventChatRef(eventId), (snapshot) => {
       if (!snapshot.exists()) return;
       dispatch(listenToEventChat(firebaseObjectToArray(snapshot.val()).reverse()));
     });
     return () => {
       dispatch({ type: CLEAR_COMMENTS });
-      getEventChatRef().off();
+      off(getEventChatRef());
     };
   }, [eventId, dispatch]);
 
   return (
     <>
       <Segment textAlign='center' attached='top' inverted color='teal' style={{ border: 'none' }}>
-        <Header>{authenticated ? 'Chat about this event' : 'Sign in to view a comment'}</Header>
+        <Header>{authenticated ? 'Chat about this event' : 'Sign in to view and comment'}</Header>
       </Segment>
+
       {authenticated && (
         <Segment attached>
           <EventDetailedChatForm eventId={eventId} parentId={0} closeForm={setShowReplyForm} />
